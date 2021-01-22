@@ -1,0 +1,22 @@
+<br>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <caption>Autos</caption>
+        <thead class="thead-dark text-center">
+            <tr>
+                <th id="id_placa">Placa</th>
+                <th id="id_tipo_combustible">Tipo de combustible</th>
+                <th id="id_precio_por_dia">Precio por dia</th>
+                <th id="id_multiplicador_fin_semana">Precio dia fin semana</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id='tr_autos_rentados' *ngFor="let a of autos">
+                <th scope="row">{{a.placa}}</th>
+                <th scope="row">{{a.tipoCombustible}}</th>
+                <th scope="row">{{a.precioPorDia}}</th>
+                <th scope="row">{{a.multiplicadorFinSemana}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>

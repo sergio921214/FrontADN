@@ -1,0 +1,38 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "paths": {
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@core-service/*": [
+        "src/app/core/services/*"
+      ],
+      "@login/*": [
+        "src/app/feature/login/*"
+      ],
+      "@auto/*": [
+        "src/app/feature/auto/*"
+      ],
+      "@rentar-auto/*": [
+        "src/app/feature/rentar-auto/*"
+      ],
+      "@usuarios/*": [
+        "src/app/feature/usuarios/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ]
+    }
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "/microservicio-ingresar": {
+        "target": "http://localhost:8083",
+        "logLevel": "debug"
+    },
+    "/req-res": {
+        "target": "https://reqres.in/api",
+        "logLevel": "debug"
+    }
+
+}

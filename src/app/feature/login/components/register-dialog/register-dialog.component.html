@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Formulario de registro</h1>
+<mat-dialog-content>
+    <div class="form-container">
+        <form [formGroup]="registerForm" (submit)="submit()">
+            <mat-form-field appearance="outline" (click)="alertSuccess = false">
+                <mat-label> E-mail </mat-label>
+                <input matInput formControlName="email" required />
+                <mat-error *ngIf="
+            registerForm.controls.email.touched &&
+            registerForm.controls.email.invalid
+          ">
+                    <span *ngIf="registerForm.controls.email.errors.required">Este campo es obligatorio.</span
+          >
+          <span *ngIf="registerForm.controls.email.errors.pattern"
+            >This field is invalid.</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" (click)="alertSuccess = false">
+        <mat-label> Password </mat-label>
+        <input matInput formControlName="password" type="password" />
+        <mat-error
+          *ngIf="
+            registerForm.controls.password.touched &&
+            registerForm.controls.password.invalid
+          "
+        >
+          <span *ngIf="registerForm.controls.password.errors.required"
+            >Este campo es obligatorio.</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Registrarse</button>
+    </form>
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+    Registro realizado con éxito
+  </div>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Salir</button>
+</div>

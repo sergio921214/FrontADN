@@ -1,0 +1,25 @@
+<!-- dialog-box.component.html -->
+<h1 mat-dialog-title>Editar Usuario</h1>
+<div mat-dialog-content>
+    <form [formGroup]="editForm" (submit)="submit()">
+        <mat-form-field (click)="alertSuccess = false">
+            <input placeholder="Actualizar Email" matInput formControlName="email" required [(ngModel)]="local_data.email" />
+        </mat-form-field>
+        <mat-form-field (click)="alertSuccess = false">
+            <input placeholder="Actualizar Nombre" matInput formControlName="first_name" required [(ngModel)]="local_data.first_name" />
+        </mat-form-field>
+        <mat-form-field (click)="alertSuccess = false">
+            <input placeholder="Actualizar Apellido" matInput formControlName="last_name" required [(ngModel)]="local_data.last_name" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Confirmar</button>
+    </form>
+    <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+        Edición exitosa
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+    Cancel
+  </button>
+</div>

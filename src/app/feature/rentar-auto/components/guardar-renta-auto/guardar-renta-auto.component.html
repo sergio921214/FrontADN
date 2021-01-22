@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2 class="text-center">Rentar Auto</h2>
+        <form id="id_crear_form" [formGroup]="crearForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label id="label_placas_disponibles" for="placa">Placa:</label>
+                <select class="form-control" name="placa" formControlName="placa" id="input_placa">
+                    <option *ngFor="let p of placas" [ngValue]="p">{{p}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label id="label_usuarios" for="usuario">Usuario:</label>
+                <select class="form-control" name="usuario" formControlName="usuario" id="input_usuario">
+                    <option *ngFor="let u of nombreUsuarios" [ngValue]="u">{{u}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label id="label_tipo_fecha_renta" for="fechaRenta">Fecha de renta: </label>
+                <input id="input_fecha_renta" class="form-control" type="date" class="my-1" placeholder="fechaRentaCadena" />
+
+            </div>
+
+
+            <div class="form-group">
+                <label id="label_fecha_entrega" for="fechEntrega">Precio por dia: </label>
+                <input id="input_fecha_entrega" type="date" class="my-1" placeholder="fechaEntrega" />
+                <div *ngIf="isError" class="text-danger">
+                    {{mensajeError}}
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button id="boton_guardar" class="btn btn-success">Calcular Renta</button>
+            </div>
+            <br>
+            <div class="alert alert-success" *ngIf="mostrarAlerta">
+
+                <div class="text-center">
+                    <strong>Desea confimar la renta? {{totalRenta}}</strong>
+                </div>
+                <div class="row">
+                    <div class="boton-confimar-renta">
+                        <button id="id_boton_confirmar_renta" class="btn btn-success" (click)="confirmarRenta()">Confirmar</button>
+                    </div>
+                    <div class="boton-cancelar-renta">
+                        <button id="id_boton_cancelar_renta" class="btn btn-danger" (click)="cancelarRenta()">Cancelar</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
