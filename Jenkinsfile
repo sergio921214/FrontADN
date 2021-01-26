@@ -10,7 +10,7 @@ pipeline {
  	disableConcurrentBuilds()
   }
   
-  tools {nodejs "node"}
+  tools {nodejs "Node11.15"}
 
   //Aquí comienzan los “items” del Pipeline
   stages{
