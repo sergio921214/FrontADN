@@ -47,6 +47,7 @@ pipeline {
     stage('Build') {
       steps { sh 'npm run-script build' }
     }
+    }
     
   post {
     always {
@@ -66,5 +67,4 @@ pipeline {
       echo 'For example, if the Pipeline was previously failing but is now successful'
     }
   }
-}
 }
