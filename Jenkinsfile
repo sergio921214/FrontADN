@@ -32,6 +32,8 @@ pipeline {
 
       }
     }
+    
+
 
     stage('Test') {
       parallel {
@@ -45,7 +47,9 @@ pipeline {
     }
 
     stage('Build') {
-      steps { sh 'npm run-script build' }
+      steps { sh 'npm install'
+              sh 'npm run-script build' 
+            }
     }
     }
     
