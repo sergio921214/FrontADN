@@ -9,8 +9,6 @@ pipeline {
     	buildDiscarder(logRotator(numToKeepStr: '3'))
  	disableConcurrentBuilds()
   }
-  
-  tools {nodejs "Node13.0.0"}
 
   //Aquí comienzan los “items” del Pipeline
   stages{
