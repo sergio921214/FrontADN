@@ -8,7 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 describe('RentarAutoComponent', () => {
   let component: RentarAutoComponent;
   let fixture: ComponentFixture<RentarAutoComponent>;
-  //let location: Location;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,7 +20,6 @@ describe('RentarAutoComponent', () => {
       ],
     })
     .compileComponents();
-    //location = TestBed.inject(Location);
   }));
 
   beforeEach(() => {

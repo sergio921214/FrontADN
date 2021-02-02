@@ -1,4 +1,3 @@
-//import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { RentarAuto } from '../../shared/model/rentar-auto';
 import { RentarAutoService } from '../../shared/service/rentar-auto.service';
@@ -15,10 +14,7 @@ export class ListarRentasAutoComponent implements OnInit {
   constructor(private rentarAutoService: RentarAutoService) { }
 
   ngOnInit() {
-    console.log("llega al on init");
-
     this.rentarAutoService.listarRentasAuto().subscribe(res => {
-      
       this.rentas = res;
     });
   }

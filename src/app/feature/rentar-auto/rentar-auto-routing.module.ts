@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GuardarRentaAutoComponent } from "./components/guardar-renta-auto/guardar-renta-auto.component";
+import { GuardarRentaAutoComponent } from './components/guardar-renta-auto/guardar-renta-auto.component';
 import { RentarAutoComponent } from './components/rentar-auto/rentar-auto.component';
-import { ListarRentasAutoComponent } from "./components/listar-renta-auto/listar-renta-auto.component";
+import { ListarRentasAutoComponent } from './components/listar-renta-auto/listar-renta-auto.component';
 
 const routes: Routes = [
   {
@@ -16,8 +16,7 @@ const routes: Routes = [
       {
         path: 'rentar-auto/listar',
         component: ListarRentasAutoComponent
-      } 
-
+      }
     ]
   }
 ];

@@ -15,15 +15,15 @@ export class AutoPage {
     private trAutosDisponibles = element.all(by.id('tr_autos_disponibles'));
     private trAutosRentados = element.all(by.id('tr_autos_rentados'));
 
-    countAutos(){
+    countAutos() {
         return this.trAutos.count();
     }
 
-    countAutosDisponibles(){
+    countAutosDisponibles() {
         return this.trAutosDisponibles.count();
     }
 
-    countAutosRentados(){
+    countAutosRentados() {
         return this.trAutosRentados.count();
     }
 

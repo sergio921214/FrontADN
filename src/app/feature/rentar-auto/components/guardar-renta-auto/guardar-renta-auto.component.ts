@@ -1,27 +1,28 @@
-import { RentarAutoService } from "./../../shared/service/rentar-auto.service";
-import { ReqResService } from "../../../../shared/servicios/req-res.service";
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { RentarAuto } from "@rentar-auto/shared/model/rentar-auto";
-import { Router } from "@angular/router";
-import { Users } from "@shared/model/usuarios";
+import { RentarAutoService } from './../../shared/service/rentar-auto.service';
+import { ReqResService } from '../../../../shared/servicios/req-res.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RentarAuto } from '@rentar-auto/shared/model/rentar-auto';
+import { Router } from '@angular/router';
+import { Users } from '@shared/model/usuarios';
 import { PlacaService } from '../../shared/service/placa-service/placa.service';
 
 @Component({
-  selector: "app-guardar-renta-auto",
-  templateUrl: "./guardar-renta-auto.component.html",
-  styleUrls: ["./guardar-renta-auto.component.css"],
+  selector: 'app-guardar-renta-auto',
+  templateUrl: './guardar-renta-auto.component.html',
+  styleUrls: ['./guardar-renta-auto.component.css'],
 })
 export class GuardarRentaAutoComponent implements OnInit {
+  valor = 'valor';
   crearForm: FormGroup;
   enviado = false;
   mostrarAlerta = false;
-  totalRenta: Number;
-  fechaRenta: String;
-  fechaEntrega: String;
-  public placas: String[];
+  totalRenta: number;
+  fechaRenta: string;
+  fechaEntrega: string;
+  public placas: string[];
   public usuarios: Users[];
-  public nombreUsuarios: String[] = [];
+  public nombreUsuarios: string[] = [];
   isError = false;
   mensajeError: string;
 
@@ -30,8 +31,8 @@ export class GuardarRentaAutoComponent implements OnInit {
     private router: Router,
     private rentarAutoService: RentarAutoService,
     private reqResService: ReqResService,
-    private placaService: PlacaService 
-  ) {}
+    private placaService: PlacaService
+    ) {}
 
   ngOnInit() {
     this.placaService.listarPlacasDisponibles().subscribe((res) => {
@@ -40,16 +41,16 @@ export class GuardarRentaAutoComponent implements OnInit {
     this.reqResService.getUsers().subscribe((res) => {
       this.usuarios = res;
       this.usuarios.forEach((usuario) => {
-        this.nombreUsuarios.push(usuario.first_name);
+        this.nombreUsuarios.push(usuario.firstName);
       });
     });
 
     this.crearForm = this.formBuilder.group({
       id: [],
-      placa: ["", Validators.required],
-      usuario: ["", Validators.required],
-      fechaRenta: ["", Validators.required],
-      fechaEntrega: ["", Validators.required],
+      placa: ['', Validators.required],
+      usuario: ['', Validators.required],
+      fechaRenta: ['', Validators.required],
+      fechaEntrega: ['', Validators.required],
     });
   }
 
@@ -60,10 +61,10 @@ export class GuardarRentaAutoComponent implements OnInit {
 
   onSubmit() {
     this.fechaRenta = (document.getElementById(
-      "input_fecha_renta"
+      'input_fecha_renta'
     ) as HTMLInputElement).value;
     this.fechaEntrega = (document.getElementById(
-      "input_fecha_entrega"
+      'input_fecha_entrega'
     ) as HTMLInputElement).value;
     this.enviado = true;
     if (
@@ -79,11 +80,10 @@ export class GuardarRentaAutoComponent implements OnInit {
       .calcular(this.crearForm.value.placa, this.fechaRenta, this.fechaEntrega)
       .subscribe((data) => {
         console.log(data);
-        console.log("alerta antes : " + this.mostrarAlerta);
-        this.totalRenta = data["valor"].valueOf();
+        console.log('alerta antes : ' + this.mostrarAlerta);
+        this.totalRenta = data[this.valor].valueOf();
         this.mostrarAlerta = true;
-        console.log("el valor de la renta " + this.totalRenta);
-        //this.router.navigate(['rentar-auto']);
+        console.log('el valor de la renta ' + this.totalRenta);
       });
   }
 
@@ -95,19 +95,19 @@ export class GuardarRentaAutoComponent implements OnInit {
     rentarAuto.precioTotalRenta = this.totalRenta;
     this.rentarAutoService.rentar(rentarAuto).subscribe((data) => {
       console.log(data);
-      this.router.navigate(["rentar-auto"]);
+      this.router.navigate(['rentar-auto']);
     });
   }
   cancelarRenta() {
     this.mostrarAlerta = false;
-    console.log("la renta se cancela");
+    console.log('la renta se cancela');
   }
 
   validarFechaRentaMenorFechaEntrega(fechaRenta, fechaEntrega) {
     if (new Date(fechaEntrega) <= new Date(fechaRenta)) {
       this.isError = true;
       this.mensajeError =
-        "La fecha de Entrega debe ser mayor a la fecha de renta";
+        'La fecha de Entrega debe ser mayor a la fecha de renta';
       return true;
     } else {
       this.isError = false;

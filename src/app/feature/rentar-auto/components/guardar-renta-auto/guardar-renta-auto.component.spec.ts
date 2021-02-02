@@ -13,7 +13,7 @@ describe('GuardarRentaAuto', () => {
   let fixture: ComponentFixture<GuardarRentaAutoComponent>;
   let rentarAutoService: RentarAutoService;
   const listaPlacasDisponibles = [
-    'ABC123','ABC321'
+    'ABC123', 'ABC321'
   ];
   const formBuilder: FormBuilder = new FormBuilder();
 
@@ -27,7 +27,7 @@ describe('GuardarRentaAuto', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      providers:[
+      providers: [
         RentarAutoService, HttpService
       ]
     })
@@ -49,7 +49,7 @@ describe('GuardarRentaAuto', () => {
   });
 
   it('Debe validar formulario invalido', () => {
-    (<HTMLButtonElement>document.getElementById('boton_guardar')).click();
+    (document.getElementById('boton_guardar')).click();
     expect(component.crearForm.invalid).toBeTruthy();
   });
   it('Calculando renta auto', () => {

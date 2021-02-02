@@ -47,7 +47,7 @@ export class HttpService {
 
 
   public doGet<T>(serviceUrl: string, opts?: Options): Observable<T> {
-    console.log("url " + serviceUrl)
+    console.log('url' + serviceUrl);
     const ropts = this.createOptions(opts);
     return this.http.get<T>(serviceUrl, ropts).pipe(map(response => response as T));
   }

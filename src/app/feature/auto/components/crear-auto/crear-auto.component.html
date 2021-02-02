@@ -5,8 +5,7 @@
         <form id="id_crear_form" [formGroup]="crearForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label id="label_placa" for="placa">Placa:</label>
-                <input type="text" formControlName="placa" name="placa" class="form-control" id="input_placa"
-                    [ngClass]="{ 'is-invalid': enviado && fc.placa.errors }">
+                <input type="text" formControlName="placa" name="placa" class="form-control" id="input_placa" [ngClass]="{ 'is-invalid': enviado && fc.placa.errors }">
                 <div *ngIf="enviado && fc.placa.errors" class="text-danger">
                     <div *ngIf="fc.placa.errors.required">Se debe ingresar una placa</div>
                 </div>
@@ -14,9 +13,8 @@
 
             <div class="form-group">
                 <label id="label_tipo_combustible" for="tipoCombustible">Tipo de combustible:</label>
-                <select class="form-control" name="tipoCombustible" formControlName="tipoCombustible"
-                    id="field_tipoCombustible" [ngClass]="{ 'is-invalid': enviado && fc.tipoCombustible.errors }">
-                    <option *ngFor="let t of tiposCombustible" [ngValue]="t" class="select-option">{{t}}</option>
+                <select class="form-control" name="tipoCombustible" formControlName="tipoCombustible" id="field_tipoCombustible" [ngClass]="{ 'is-invalid': enviado && fc.tipoCombustible.errors }">
+                    <option *ngFor="let t of tiposCombustible | async" [ngValue]="t" class="select-option">{{t}}</option>
                 </select>
                 <div *ngIf="enviado && fc.tipoCombustible.errors" class="text-danger">
                     <div *ngIf="fc.tipoCombustible.errors.required">Se debe ingresar una Tipo de combustible</div>
@@ -25,17 +23,15 @@
 
             <div class="form-group">
                 <label id="label_precio_por_dia" for="precioPorDia">Precio por dia:</label>
-                <input type="number" min = 0 formControlName="precioPorDia" name="precioPorDia" class="form-control"
-                    id="input_precio_por_dia" [ngClass]="{ 'is-invalid': enviado && fc.precioPorDia.errors }">
+                <input type="number" min=0 formControlName="precioPorDia" name="precioPorDia" class="form-control" id="input_precio_por_dia" [ngClass]="{ 'is-invalid': enviado && fc.precioPorDia.errors }">
                 <div *ngIf="enviado && fc.precioPorDia.errors" class="text-danger">
                     <div *ngIf="fc.precioPorDia.errors.required">Se debe ingresar un precio por dia</div>
-                 </div>    
+                </div>
             </div>
 
             <div class="form-group">
                 <label id="label_multiplicador_fin_semana" for="multiplicadorFinSemana">Precio fin de semana:</label>
-                <input type="number" formControlName="multiplicadorFinSemana" name="multiplicadorFinSemana"
-                    class="form-control" id="input_multiplicador_fin_semana">
+                <input type="number" formControlName="multiplicadorFinSemana" name="multiplicadorFinSemana" class="form-control" id="input_multiplicador_fin_semana">
             </div>
             <div class="text-center">
                 <button id="boton_guardar" class="btn btn-success">Guardar</button>

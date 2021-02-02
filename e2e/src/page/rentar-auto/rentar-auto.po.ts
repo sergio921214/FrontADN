@@ -10,7 +10,7 @@ export class RentarAutoPage {
     private linkPlaca = element(by.id('input_placa'));
     private trRentaAutos = element.all(by.id('tr_renta_autos'));
 
-    countRentaAutos(){
+    countRentaAutos() {
         return this.trRentaAutos.count();
     }
 

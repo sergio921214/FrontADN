@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { ListarAutoRentadoComponent } from './listar-auto-rentado.component';
-import { AutoService } from "../../shared/service/auto.service";
-import { Auto } from "../../shared/model/auto";
+import { AutoService } from '../../shared/service/auto.service';
+import { Auto } from '../../shared/model/auto';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -14,22 +14,22 @@ describe('ListarAutoRentadoComponent', () => {
   let fixture: ComponentFixture<ListarAutoRentadoComponent>;
   let autoService: AutoService;
   const listaAutosRentados = [
-    new Auto('ABC123', 'GAS',30000,2), new Auto('ANC321', 'GASOLINA', 20000, 3)
+    new Auto('ABC123', 'GAS', 30000, 2), new Auto('ANC321', 'GASOLINA', 20000, 3)
   ];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListarAutoRentadoComponent ],
+      declarations: [ListarAutoRentadoComponent],
       imports: [
         CommonModule,
         HttpClientModule,
         RouterTestingModule
       ],
-      providers:[
+      providers: [
         AutoService, HttpService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

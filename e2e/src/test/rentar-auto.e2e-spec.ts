@@ -15,7 +15,7 @@ describe('workspace-project Producto', () => {
         rentarAuto = new RentarAutoPage();
     });
 
-    it('Deberia crear una renta de auto', async() => {
+    it('Deberia crear una renta de auto', async () => {
         const PLACA = 'JJJ212';
         const FECHA_RENTA = '2021-01-05';
         const FECHA_ENTREGA = '01/09/2021';
@@ -33,12 +33,12 @@ describe('workspace-project Producto', () => {
         rentarAuto.clickBotonCalcularRentaAuto();
         rentarAuto.clickBotonConfirmarRentaAuto();
 
-        expect(browser.getCurrentUrl()).toBe('http://localhost:4200/rentar-auto')
+        expect(browser.getCurrentUrl()).toBe('http://localhost:4200/rentar-auto');
 
 
     });
 
-    it('Deberia listar rentas de autos', async() => {
+    it('Deberia listar rentas de autos', async () => {
         page.navigateTo();
         navBar.clickBotonRentarAutos();
         rentarAuto.clickBotonListarRentasAuto();

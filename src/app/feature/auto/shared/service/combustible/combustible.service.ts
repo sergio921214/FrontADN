@@ -5,16 +5,12 @@ import { environment } from 'src/environments/environment';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CombustibleService {
 
   constructor(protected http: HttpService) {}
 
-  public obtenerTiposCombustible(): Observable <String[]> {
-    return this.http.doGet<String[]>(`${environment.endpoint}tipo-combustible`, this.http.optsName('listarTipoCombustible'));
+  public obtenerTiposCombustible(): Observable <string[]> {
+    return this.http.doGet<string[]>(`${environment.endpoint}tipo-combustible`, this.http.optsName('listarTipoCombustible'));
   }
-
-
 }

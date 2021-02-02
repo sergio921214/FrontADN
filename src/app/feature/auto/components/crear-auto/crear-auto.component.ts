@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CombustibleService } from '../../shared/service/combustible/combustible.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -14,19 +15,17 @@ export class CrearAutoComponent implements OnInit {
 
   crearForm: FormGroup;
   enviado = false;
-  public tiposCombustible: String[];
+  public tiposCombustible: Observable<string[]>;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private autoService: AutoService,
     private combustibleService: CombustibleService
-    ) {}
+  ) { }
 
   ngOnInit() {
-    this.combustibleService.obtenerTiposCombustible().subscribe(res => {
-      this.tiposCombustible = res;
-    });
+    this.tiposCombustible = this.combustibleService.obtenerTiposCombustible();
     this.crearForm = this.formBuilder.group({
       id: [],
       placa: ['', Validators.required],
@@ -47,12 +46,12 @@ export class CrearAutoComponent implements OnInit {
       return;
     }
     this.autoService.crear(this.crearForm.value)
-       .subscribe( data => {
-         console.log(data);
-        this.router.navigate(['auto']); 
-      }); 
+      .subscribe(data => {
+        console.log(data);
+        this.router.navigate(['auto']);
+      });
 
-    
+
   }
 
 }

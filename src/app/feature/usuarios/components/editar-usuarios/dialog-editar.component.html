@@ -3,13 +3,13 @@
 <div mat-dialog-content>
     <form [formGroup]="editForm" (submit)="submit()">
         <mat-form-field (click)="alertSuccess = false">
-            <input placeholder="Actualizar Email" matInput formControlName="email" required [(ngModel)]="local_data.email" />
+            <input placeholder="Actualizar Email" matInput formControlName="email" required [(ngModel)]="localData.email" />
         </mat-form-field>
         <mat-form-field (click)="alertSuccess = false">
-            <input placeholder="Actualizar Nombre" matInput formControlName="first_name" required [(ngModel)]="local_data.first_name" />
+            <input placeholder="Actualizar Nombre" matInput formControlName="first_name" required [(ngModel)]="localData.first_name" />
         </mat-form-field>
         <mat-form-field (click)="alertSuccess = false">
-            <input placeholder="Actualizar Apellido" matInput formControlName="last_name" required [(ngModel)]="local_data.last_name" />
+            <input placeholder="Actualizar Apellido" matInput formControlName="last_name" required [(ngModel)]="localData.last_name" />
         </mat-form-field>
         <button mat-raised-button color="primary" type="submit">Confirmar</button>
     </form>

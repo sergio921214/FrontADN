@@ -1,15 +1,16 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Usuario } from "../modelo/usuario";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Usuario } from '../modelo/usuario';
 
-import { map } from "rxjs/operators";
-import { Router } from "@angular/router";
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthService {
   private url = `https://reqres.in/api`;
+  private TOKEN = 'token';
 
   userToken: string;
 
@@ -18,14 +19,14 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("token");
-    this.router.navigateByUrl("/login");
+    localStorage.removeItem(this.TOKEN);
+    this.router.navigateByUrl('/login');
   }
 
   login(usuario: Usuario) {
     return this.http.post(`${this.url}/login`, usuario).pipe(
       map((resp) => {
-        this.guardarToken(resp["token"]);
+        this.guardarToken(resp[this.TOKEN]);
         return resp;
       })
     );
@@ -33,32 +34,20 @@ export class AuthService {
 
   private guardarToken(idToken: string) {
     this.userToken = idToken;
-    localStorage.setItem("token", idToken);
-
-    //Puede implementarse para agregar tiempo de expiración al token/sesión
-
-    // let hoy = new Date();
-    // hoy.setSeconds( 3600 );
-
-    // localStorage.setItem('expira', hoy.getTime().toString() );
+    localStorage.setItem(this.TOKEN, idToken);
   }
 
   leerToken() {
-    if (localStorage.getItem("token")) {
-      this.userToken = localStorage.getItem("token");
+    if (localStorage.getItem(this.TOKEN)) {
+      this.userToken = localStorage.getItem(this.TOKEN);
     } else {
-      this.userToken = "";
+      this.userToken = '';
     }
 
     return this.userToken;
   }
 
   estaAutenticado()  {
-    return localStorage.getItem("token");
-    // if (localStorage.getItem("token")) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
+    return localStorage.getItem(this.TOKEN);
   }
 }

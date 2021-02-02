@@ -13,14 +13,12 @@ export class AppComponent {
     { url: '/auto', nombre: 'Auto' },
     { url: '/rentar-auto', nombre: 'Rentar Auto' },
     { url: '/usuarios', nombre: 'Usuarios' }
-    
   ];
-  logueado(){
-    if (localStorage.getItem("token")) {
+  logueado() {
+    if (localStorage.getItem('token')) {
       return true;
     } else {
       return false;
     }
-
-  }  
+  }
 }

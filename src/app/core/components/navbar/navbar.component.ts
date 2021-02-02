@@ -37,11 +37,9 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService
   ) { }
   logueado = this.authService.estaAutenticado();
-  ngOnInit() {
-    
-  }
+  ngOnInit() { }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 

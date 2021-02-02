@@ -17,7 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   declarations: [ToolbarComponent, NavbarComponent],
   imports: [
     CommonModule,
-    RouterModule, 
+    RouterModule,
     MatSnackBarModule
   ],
   exports: [ToolbarComponent, NavbarComponent],

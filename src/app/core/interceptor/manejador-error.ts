@@ -1,10 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
-//import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
-//import { environment } from '../../../environments/environment';
 import { HTTP_ERRORES_CODIGO } from './http-codigo-error';
-//import { Observable } from 'rxjs';
-import { NotificationService } from "../services/notification.service";
+import { NotificationService } from '../services/notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +12,7 @@ export class ManejadorError implements ErrorHandler {
 
   handleError(error: string | Error): void {
     const notifier = this.injector.get(NotificationService);
-    const mensajeError = this.mensajePorDefecto(error);;
+    const mensajeError = this.mensajePorDefecto(error);
     notifier.showError(mensajeError);
   }
 
